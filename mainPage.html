@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>即时信息网站</title>
+</head>
+
+<style>
+    .header{
+        color: blue ;
+        background-color: #F2EBE5;
+        border: 2px solid #647295;
+        border-radius: 20px;
+        text-align: center;
+    }
+
+    .menu{
+        background-color: #F2EBE5;
+        float: left;
+        border : 2px solid #647295;
+        border-radius: 30px;
+        height: 100% ;
+        width: 150px ;
+        margin-top: 5px;
+        text-align: center;
+    }
+
+    .headerText{
+        font-family:"华文彩云";
+		   font-size:40px; 
+		   font-weight:bolder;
+		   -webkit-text-stroke:1px black;      
+		   -webkit-text-fill-color:transparent; 
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    nav {
+        position: fixed;
+        width: 300px;
+        height: 80%;
+        left: 6px;
+        background-color: #F2EBE5;
+        border : 2px solid #647295;
+        border-radius: 0px 0px 0px 0px;
+        margin-top: 6px;
+        margin-left: 4px;
+    }
+
+    .menus {
+        margin: 50px 0;
+        color: #333;
+    }
+
+    .li {
+        letter-spacing: 2px;
+        font-size: 17px;
+        font-weight: 600;
+        padding: 16px 12px;
+        box-sizing: border-box;
+        transition: 0.3s;
+    }
+
+    .menus li:hover {
+        background-color: #9F496E;
+    }
+
+    .li .fa {
+        font-size: 20px;
+        width: 50px;
+        height: 20px;
+        text-align: center;
+        margin-left: 5px;
+    }
+
+    .li ul {
+        border-radius: 20px;
+        width: 0;
+        height: 550px;
+        padding: 50px 0;
+        background-color: #d292af;
+        position: absolute;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        transition: 0.3s;
+        height: 83%;
+        margin-top: 2px;
+    }
+
+    .li ul li {
+        padding: 16px 24px;
+        white-space: nowrap;
+        transition: 0.3s;
+    }
+
+    .li:hover ul {
+        border-radius: 20px;
+        width: 250px;
+        height:83%
+    }
+
+    .li ul li:hover {
+        background-color: #87cefa;
+    }
+
+    .li ul li a{
+        text-decoration: none;
+    }
+
+    .content.active{
+        display:block;
+        text-align: center;
+    }
+
+    .content{
+        display:none;
+        width: 79%;
+        border : 2px solid #647295;
+        border-radius: 20px 20px 20px 20px;
+        margin-top: 6px;
+        margin-left: 320px;
+    }
+
+</style>
+
+<body style="background-color: #F2EBE5">
+    <div id="container" style="width: 100%; ">
+        <div class="header">
+            <h1 class = "headerText"> 即 时 信 息 网</h1>
+        </div>
+
+        <nav>
+            <ul class="menus">
+                <li class="li"> 每 日 菜 价 <ul>
+                        <li><a href="#" onclick="showSection('section1')">海口菜篮子网</a></li>
+                        <li><a href="#" onclick="showSection('section1')">今日菜价网</a></li>
+                    </ul>
+                </li>
+                <li class="li"> 每 日 天 气 
+                    <ul>
+                        <li><a href="#" onclick="showSection('section1')">国内天气</a></li>
+                    </ul>
+                </li>
+                <li class="li"> 每日股价
+                    <ul>
+                        <li><a href="#" onclick="showSection('section1')">国内天气</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+
+    <div id="section1" class="content active">学生信息查询</div>
+
+    <div id="section2" class="content">汪汪汪</div>
+
+    <div id="section3" class="content">喵喵喵</div>
+
+    <div id="section4" class="content">咯咯咯</div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+</body>
+
+</html>

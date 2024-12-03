@@ -9,9 +9,7 @@ def run_exe(file_path):
     except Exception as e:
         print(f"Failed to execute {file_path}.")
 
-file_paths = ["D:\\repos\\HomeWork_EC_2024_12_2_ING\\ExeDoc\\section1\\sec1EXE\\sec1EXE.exe",]
-
-
+file_paths = ["D:\\repos\\HomeWork_EC_2024_12_2_ING\\ExeDoc\\section1\\sec1EXE\\sec1EXE.exe","D:\\repos\\HomeWork_EC_2024_12_2_ING\\ExeDoc\\section2\\sec2EXE\\sec2EXE.exe"]
 
 while True:
     time.sleep(5)

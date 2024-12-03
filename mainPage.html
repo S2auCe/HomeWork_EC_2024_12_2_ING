@@ -171,7 +171,9 @@
             document.getElementById(id).classList.add('active');
 
             if (id === 'section1') {
-                loadCSV("./priceOfVegetables.csv");
+                loadCSV("ExeDoc\\section1\\sec1EXE\\priceOfVegetables.csv");
+            } else if (id === 'section2') {
+                loadCSV2("ExeDoc\\section2\\sec2EXE\\priceOfVegetables.csv");
             }
         }
 
@@ -188,11 +190,24 @@
             xhr.send();
         }
 
+        function loadCSV2(targetIndex) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', targetIndex, true); 
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    processCSV2(xhr.responseText);
+                } else {
+                    console.error('Failed to load CSV file');
+                }
+            };
+            xhr.send();
+        }
+
         function processCSV(text) {
             const rows = text.split('\n');
             const table = document.querySelector('.content.active table');
             let html = '';
-            
+
             rows.forEach((row, index) => {
                 const cells = row.split(',');
                 html += '<tr>';
@@ -206,7 +221,32 @@
                 html += '</tr>';
             });
 
-            table.innerHTML = html;
+            table.querySelector('tbody').innerHTML = html;
+        }
+
+        function processCSV2(text) {
+            const rows = text.split('\n');
+            const table = document.querySelector('.content.active table');
+            let html = '';
+
+            html +='<tr>'
+            html +='<th>名称</th>'
+            html +='<th>高</th>'
+            html +='<th>中</th>'
+            html +='<th>低</th>'
+            html +='<th>产地</th>'
+            html +='</tr>'
+
+            rows.forEach((row, index) => {
+                const cells = row.split(',');
+                html += '<tr>';
+                cells.forEach(cell => {
+                    html += `<td>${cell}</td>`;
+                });
+                html += '</tr>';
+            });
+
+            table.querySelector('tbody').innerHTML = html;
         }
     </script>
 
@@ -220,19 +260,14 @@
                 <li class="li"> 每 日 菜 价
                     <ul>
                         <li><a href="#" onclick="showSection('section1')">海口菜篮子网</a></li>
-                        <li><a href="#" onclick="showSection('section2')">今日菜价网</a></li>
-                    </ul>
-                </li>
-                <li class="li"> 每 日 天 气
-                    <ul>
-                        <li><a href="#" onclick="showSection('section3')">国内天气</a></li>
+                        <li><a href="#" onclick="showSection('section2')">云南蔬菜市场综合菜价</a></li>
                     </ul>
                 </li>
                 <li class="li"> 每日股价
                     <ul>
-                        <li><a href="#" onclick="showSection('section4')">亚洲股市</a></li>
-                        <li><a href="#" onclick="showSection('section5')">欧洲股市</a></li>
-                        <li><a href="#" onclick="showSection('section6')">美洲股市</a></li>
+                        <li><a href="#" onclick="showSection('section3')">亚洲股市</a></li>
+                        <li><a href="#" onclick="showSection('section4')">欧洲股市</a></li>
+                        <li><a href="#" onclick="showSection('section5')">美洲股市</a></li>
                     </ul>
                 </li>
             </ul>
@@ -241,40 +276,31 @@
 
     <div id="section1" class="content active">海口菜篮子网
         <table border="1">
-            <thead>
-                <tr>
-                    <th>发布日期</th>
-                    <th>菜名</th>
-                    <th>价格(元/斤)</th>
-                </tr>
-            </thead>
             <tbody>
                 <!-- CSV内容将显示在这里 -->
             </tbody>
         </table>
     </div>
 
-    <div id="section2" class="content">今日菜价网
+    <div id="section2" class="content">云南蔬菜市场综合菜价
+        <table border="1">
+            <tbody>
+                <!-- CSV内容将显示在这里 -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="section3" class="content">亚洲股市
         <table>
         </table>
     </div>
 
-    <div id="section3" class="content">国内天气
+    <div id="section4" class="content">欧洲股市
         <table>
         </table>
     </div>
 
-    <div id="section4" class="content">亚洲股市
-        <table>
-        </table>
-    </div>
-
-    <div id="section5" class="content">欧洲股市
-        <table>
-        </table>
-    </div>
-
-    <div id="section6" class="content">美洲股市
+    <div id="section5" class="content">美洲股市
         <table>
         </table>
     </div>

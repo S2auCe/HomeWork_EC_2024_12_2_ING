@@ -4,272 +4,32 @@
 <head>
     <meta charset="utf-8">
     <title>即时信息网站</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
-<style>
-    .header {
-        color: blue;
-        background-color: #F2EBE5;
-        border: 2px solid #647295;
-        border-radius: 20px;
-        text-align: center;
-    }
-
-    .menu {
-        background-color: #F2EBE5;
-        float: left;
-        border: 2px solid #647295;
-        border-radius: 30px;
-        height: 100%;
-        width: 150px;
-        margin-top: 5px;
-        text-align: center;
-    }
-
-    .headerText {
-        font-family: "华文彩云";
-        font-size: 40px;
-        font-weight: bolder;
-        -webkit-text-stroke: 1px black;
-        -webkit-text-fill-color: transparent;
-    }
-
-    ul {
-        list-style: none;
-    }
-
-    nav {
-        position: fixed;
-        width: 300px;
-        height: 80%;
-        left: 6px;
-        background-color: #F2EBE5;
-        border: 2px solid #647295;
-        border-radius: 0px 0px 0px 0px;
-        margin-top: 6px;
-        margin-left: 4px;
-    }
-
-    .menus {
-        margin: 50px 0;
-        color: #333;
-    }
-
-    .li {
-        letter-spacing: 2px;
-        font-size: 17px;
-        font-weight: 600;
-        padding: 16px 12px;
-        box-sizing: border-box;
-        transition: 0.3s;
-    }
-
-    .menus li:hover {
-        background-color: #9F496E;
-    }
-
-    .li .fa {
-        font-size: 20px;
-        width: 50px;
-        height: 20px;
-        text-align: center;
-        margin-left: 5px;
-    }
-
-    .li ul {
-        border-radius: 20px;
-        width: 0;
-        height: 550px;
-        padding: 50px 0;
-        background-color: #d292af;
-        position: absolute;
-        top: 0;
-        right: 0;
-        overflow: hidden;
-        transition: 0.3s;
-        height: 83%;
-        margin-top: 2px;
-    }
-
-    .li ul li {
-        padding: 16px 24px;
-        white-space: nowrap;
-        transition: 0.3s;
-    }
-
-    .li:hover ul {
-        border-radius: 20px;
-        width: 250px;
-        height: 83%;
-    }
-
-    .li ul li:hover {
-        background-color: #87cefa;
-    }
-
-    .li ul li a {
-        text-decoration: none;
-    }
-
-    .content.active {
-        display: block;
-        text-align: center;
-        font-weight: bold;
-        font-size: 24px;
-    }
-
-    .content {
-        display: none;
-        width: 79%;
-        border: 2px solid #647295;
-        border-radius: 20px 20px 20px 20px;
-        margin-top: 6px;
-        margin-left: 320px;
-    }
-
-    table {
-        width: 60%;
-        margin: 10px auto;
-        border-collapse: collapse;
-        box-shadow: 0 2px 10px rgba(64, 64, 64, 0.5);
-        background: #f9f9f9;
-    }
-
-    th,
-    td {
-        padding: 8px;
-        border: 1px solid #ddd;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    th {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    caption {
-        margin: 8px;
-        font-size: 20px;
-        font-weight: bold;
-    }
-</style>
-
 <body style="background-color: #F2EBE5">
-
-    <script>
-        function showSection(id) {
-            document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-
-            if (id === 'section1') {
-                loadCSV("ExeDoc\\section1\\sec1EXE\\priceOfVegetables.csv");
-            } else if (id === 'section2') {
-                loadCSV2("ExeDoc\\section2\\sec2EXE\\priceOfVegetables.csv");
-            }
-        }
-
-        function loadCSV(targetIndex) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', targetIndex, true); 
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    processCSV(xhr.responseText);
-                } else {
-                    console.error('Failed to load CSV file');
-                }
-            };
-            xhr.send();
-        }
-
-        function loadCSV2(targetIndex) {
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', targetIndex, true); 
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    processCSV2(xhr.responseText);
-                } else {
-                    console.error('Failed to load CSV file');
-                }
-            };
-            xhr.send();
-        }
-
-        function processCSV(text) {
-            const rows = text.split('\n');
-            const table = document.querySelector('.content.active table');
-            let html = '';
-
-            rows.forEach((row, index) => {
-                const cells = row.split(',');
-                html += '<tr>';
-                cells.forEach(cell => {
-                    if (index === 0) {
-                        html += `<th>${cell}</th>`;
-                    } else {
-                        html += `<td>${cell}</td>`;
-                    }
-                });
-                html += '</tr>';
-            });
-
-            table.querySelector('tbody').innerHTML = html;
-        }
-
-        function processCSV2(text) {
-            const rows = text.split('\n');
-            const table = document.querySelector('.content.active table');
-            let html = '';
-
-            html +='<tr>'
-            html +='<th>名称</th>'
-            html +='<th>高</th>'
-            html +='<th>中</th>'
-            html +='<th>低</th>'
-            html +='<th>产地</th>'
-            html +='</tr>'
-
-            rows.forEach((row, index) => {
-                const cells = row.split(',');
-                html += '<tr>';
-                cells.forEach(cell => {
-                    html += `<td>${cell}</td>`;
-                });
-                html += '</tr>';
-            });
-
-            table.querySelector('tbody').innerHTML = html;
-        }
-    </script>
-
-    <div id="container" style="width: 100%; ">
+    <div id="container" style="width: 100%;">
         <div class="header">
-            <h1 class="headerText"> 即 时 信 息 网</h1>
+            <h1 class="headerText">即 时 信 息 网</h1>
         </div>
 
         <nav>
             <ul class="menus">
-                <li class="li"> 每 日 菜 价
+                <li class="li">每 日 菜 价
                     <ul>
                         <li><a href="#" onclick="showSection('section1')">海口菜篮子网</a></li>
                         <li><a href="#" onclick="showSection('section2')">云南蔬菜市场综合菜价</a></li>
                     </ul>
                 </li>
-                <li class="li"> 每日股价
+                <li class="li">每日股价
                     <ul>
                         <li><a href="#" onclick="showSection('section3')">亚洲股市</a></li>
                         <li><a href="#" onclick="showSection('section4')">欧洲股市</a></li>
                         <li><a href="#" onclick="showSection('section5')">美洲股市</a></li>
                     </ul>
                 </li>
+                <li class="li"><a href="#" onclick="showSection('customerService')">客服页面</a></li>
             </ul>
         </nav>
     </div>
@@ -280,6 +40,24 @@
                 <!-- CSV内容将显示在这里 -->
             </tbody>
         </table>
+        <div class="comment-section">
+            <h3>评论区</h3>
+            <form class="comment-form">
+                <label for="comment1">留言:</label>
+                <br></br>
+                <textarea id="comment1" name="comment1" class="styled-textarea"></textarea><br><br>
+                <button type="submit" class="styled-button">发送</button>
+            </form>
+            <div class="random-comments">
+                <h4>随机评论</h4>
+                <ul id="randomComments1">
+                    <!-- 随机评论将显示在这里 -->
+                </ul>
+            </div>
+            <div class="comments">
+                <!-- 评论内容将显示在这里 -->
+            </div>
+        </div>
     </div>
 
     <div id="section2" class="content">云南蔬菜市场综合菜价
@@ -288,21 +66,114 @@
                 <!-- CSV内容将显示在这里 -->
             </tbody>
         </table>
+        <div class="comment-section">
+            <h3>评论区</h3>
+            <form class="comment-form">
+                <label for="comment2">留言:</label>
+                <br></br>
+                <textarea id="comment2" name="comment2" class="styled-textarea"></textarea><br><br>
+                <button type="submit" class="styled-button">发送</button>
+            </form>
+            <div class="random-comments">
+                <h4>随机评论</h4>
+                <ul id="randomComments2">
+                    <!-- 随机评论将显示在这里 -->
+                </ul>
+            </div>
+            <div class="comments">
+                <!-- 评论内容将显示在这里 -->
+            </div>
+        </div>
     </div>
 
     <div id="section3" class="content">亚洲股市
-        <table>
+        <table border="1">
+            <tbody>
+                <!-- CSV内容将显示在这里 -->
+            </tbody>
         </table>
+        <div class="comment-section">
+            <h3>评论区</h3>
+            <form class="comment-form">
+                <label for="comment3">留言:</label>
+                <br></br>
+                <textarea id="comment3" name="comment3" class="styled-textarea"></textarea><br><br>
+                <button type="submit" class="styled-button">发送</button>
+            </form>
+            <div class="random-comments">
+                <h4>随机评论</h4>
+                <ul id="randomComments3">
+                    <!-- 随机评论将显示在这里 -->
+                </ul>
+            </div>
+            <div class="comments">
+                <!-- 评论内容将显示在这里 -->
+            </div>
+        </div>
     </div>
 
     <div id="section4" class="content">欧洲股市
-        <table>
+        <table border="1">
+            <tbody>
+                <!-- CSV内容将显示在这里 -->
+            </tbody>
         </table>
+        <div class="comment-section">
+            <h3>评论区</h3>
+            <form class="comment-form">
+                <label for="comment4">留言:</label>
+                <br></br>
+                <textarea id="comment4" name="comment4" class="styled-textarea"></textarea><br><br>
+                <button type="submit" class="styled-button">发送</button>
+            </form>
+            <div class="random-comments">
+                <h4>随机评论</h4>
+                <ul id="randomComments4">
+                    <!-- 随机评论将显示在这里 -->
+                </ul>
+            </div>
+            <div class="comments">
+                <!-- 评论内容将显示在这里 -->
+            </div>
+        </div>
     </div>
 
     <div id="section5" class="content">美洲股市
-        <table>
+        <table border="1">
+            <tbody>
+                <!-- CSV内容将显示在这里 -->
+            </tbody>
         </table>
+        <div class="comment-section">
+            <h3>评论区</h3>
+            <form class="comment-form">
+                <label for="comment5">留言:</label>
+                <br></br>
+                <textarea id="comment5" name="comment5" class="styled-textarea"></textarea><br><br>
+                <button type="submit" class="styled-button">发送</button>
+            </form>
+            <div class="random-comments">
+                <h4>随机评论</h4>
+                <ul id="randomComments5">
+                    <!-- 随机评论将显示在这里 -->
+                </ul>
+            </div>
+            <div class="comments">
+                <!-- 评论内容将显示在这里 -->
+            </div>
+        </div>
+    </div>
+
+    <div id="customerService" class="content">客服页面
+        <h2>反馈</h2>
+        <form id="contactForm">
+            <label for="email">邮箱:</label>
+            <input type="email" id="email" name="email" class="styled-input"><br><br>
+            <label for="message">留言:</label>
+            <br></br>
+            <textarea id="message" name="message" class="styled-textarea"></textarea><br><br>
+            <button type="submit" class="styled-button">发送</button>
+        </form>
     </div>
 </body>
 

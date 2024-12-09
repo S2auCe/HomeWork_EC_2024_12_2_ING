@@ -1,0 +1,223 @@
+
+.header {
+    color: blue;
+    background-color: #F2EBE5;
+    border: 2px solid #647295;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.menu {
+    background-color: #F2EBE5;
+    float: left;
+    border: 2px solid #647295;
+    border-radius: 30px;
+    height: 100%;
+    width: 150px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.headerText {
+    font-family: "华文彩云";
+    font-size: 40px;
+    font-weight: bolder;
+    -webkit-text-stroke: 1px black;
+    -webkit-text-fill-color: transparent;
+}
+
+ul {
+    list-style: none;
+}
+
+nav {
+    position: fixed;
+    width: 300px;
+    height: 80%;
+    left: 6px;
+    background-color: #F2EBE5;
+    border: 2px solid #647295;
+    border-radius: 0px 0px 0px 0px;
+    margin-top: 6px;
+    margin-left: 4px;
+}
+
+.menus {
+    margin: 50px 0;
+    color: #333;
+}
+
+.li {
+    letter-spacing: 2px;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 16px 12px;
+    box-sizing: border-box;
+    transition: 0.3s;
+}
+
+.menus li:hover {
+    background-color: #9F496E;
+}
+
+.li .fa {
+    font-size: 20px;
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    margin-left: 5px;
+}
+
+.li ul {
+    border-radius: 20px;
+    width: 0;
+    height: 550px;
+    padding: 50px 0;
+    background-color: #d292af;
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+    transition: 0.3s;
+    height: 83%;
+    margin-top: 2px;
+}
+
+.li ul li {
+    padding: 16px 24px;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.li:hover ul {
+    border-radius: 20px;
+    width: 250px;
+    height: 83%;
+}
+
+.li ul li:hover {
+    background-color: #87cefa;
+}
+
+.li ul li a {
+    text-decoration: none;
+}
+
+.content.active {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.content {
+    display: none;
+    width: 79%;
+    border: 2px solid #647295;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 6px;
+    margin-left: 320px;
+}
+
+table {
+    width: 60%;
+    margin: 10px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(64, 64, 64, 0.5);
+    background: #f9f9f9;
+}
+
+th,
+td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+caption {
+    margin: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.large-textarea {
+    width: 100%;
+    height: 200px;
+}
+
+.large-button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+}
+
+.comment-section {
+    margin-top: 20px;
+}
+
+.comment-form {
+    margin-bottom: 20px;
+}
+
+.random-comments {
+    margin-bottom: 20px;
+}
+
+.styled-input, .styled-textarea {
+    width: 70%;
+    padding: 10px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.styled-input:focus, .styled-textarea:focus {
+    border-color: #555;
+}
+
+.styled-textarea {
+    height: 150px;
+}
+
+.styled-button {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.styled-button:hover {
+    background-color: #45a049;
+}
+
+.comments {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}
